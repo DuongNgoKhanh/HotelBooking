@@ -5,8 +5,6 @@
     "main": "index.ts",
     "scripts": {
         "start": "nodemon src/index.ts",
-        "seed": "nodemon src/seeders/index.ts",
-        "seed:fresh": "nodemon src/seeders/fresh.ts"
     },
     "author": "",
     "license": "ISC",
