@@ -205,7 +205,7 @@ router.get('/search', verifyToken, async (req: Request, res: Response) => {
             ]);
         } else {
             [hotels, user] = await Promise.all([
-                Hotel.find(query).where('quantity').ne(0).skip(skip).limit(pageSize),
+                Hotel.find(query).where('quantity').ne(0).skip(skip).limit(pageSize).lean(),
                 User.updateOne(
                     {
                         _id: req.userId,
