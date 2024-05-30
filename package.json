@@ -1,11 +1,12 @@
 {
     "name": "server",
     "version": "1.0.0",
-    "type": "module",
     "description": "",
     "main": "index.ts",
     "scripts": {
-        "start": "node src/index.ts",
+        "start": "ts-node src/index.ts",
+        "seed": "nodemon src/seeders/index.ts",
+        "seed:fresh": "nodemon src/seeders/fresh.ts"
     },
     "author": "",
     "license": "ISC",
@@ -24,7 +25,8 @@
         "mongodb": "^6.4.0",
         "mongoose": "^8.2.0",
         "multer": "^1.4.5-lts.1",
-        "stripe": "^15.5.0"
+        "stripe": "^15.5.0",
+        "ts-node": "^10.9.2"
     },
     "devDependencies": {
         "@types/bcryptjs": "^2.4.6",
@@ -34,7 +36,7 @@
         "@types/jsonwebtoken": "^9.0.6",
         "@types/multer": "^1.4.11",
         "@types/node": "^20.11.21",
-        "typescript": "^5.3.3",
-         "ts-node": "^10.9.2",
+        
+        "typescript": "^5.3.3"
     }
 }

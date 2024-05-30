@@ -47,7 +47,7 @@ router.post(
 
             const { address, ...info } = req.body;
 
-            // const imageFiles = req.files as Express.Multer.File[];
+            const imageFiles = req.files as Express.Multer.File[];
             const newHotel: HotelType = info;
 
             //1. Upload the images to Cloudinary
@@ -57,8 +57,8 @@ router.post(
                 api_key: process.env.GOONG_API_KEY,
             } as any);
 
-            const [location] = await Promise.all([
-                // uploadImages(imageFiles),
+            const [imageUrls, location] = await Promise.all([
+                uploadImages(imageFiles),
                 axios({
                     method: 'GET',
                     url: `https://rsapi.goong.io/Geocode?${locationSearchParams.toString()}`,
@@ -74,7 +74,7 @@ router.post(
             };
 
             newHotel.address = address;
-            newHotel.imageUrls = ['https://placehold.co/600x400?text=Hello+World'];
+            newHotel.imageUrls = imageUrls;
             newHotel.lastUpdated = new Date();
             newHotel.userId = req.userId;
             newHotel.city = location.data.results[0].compound.province;
